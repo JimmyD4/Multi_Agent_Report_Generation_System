@@ -94,12 +94,16 @@ Create a file named `requirements.txt` in your project root with the following c
 │   ├── editor_agent.py
 │   ├── research_agent.py
 │   └── writer_agent.py
+
+
 ├── tasks/
 │   ├── __init__.py
 │   ├── critique_agent_task.py
 │   ├── editor_agent_task.py
 │   ├── research_agent_task.py
 │   └── writer_agent_task.py
+
+
 ├── reports/                 # Directory where all generated reports will be saved
 ├── .env.example             
 ├── .env                    
