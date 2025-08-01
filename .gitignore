@@ -1,0 +1,17 @@
+# Environment variables
+.env
+
+# Python virtual environment
+myenv/
+.venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Streamlit related files
+.streamlit/
+
+# Any other local generated files you don't want to commit
+reports/
