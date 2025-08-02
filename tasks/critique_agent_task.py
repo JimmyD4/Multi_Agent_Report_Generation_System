@@ -8,7 +8,7 @@ from tasks.research_agent_task import research_agent_task
 critique_agent_task = Task(
     agent=critique_agent,
     description=textwrap.dedent("""
-                Review and critique the initial report written by the writer agent.
+                Review and critique the first draft report written by the writer agent.
 
                 Your tasks is to critique the report based on the following criteria:
                 1. Analyze the structure and clarity of the report

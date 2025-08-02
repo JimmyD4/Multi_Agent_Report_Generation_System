@@ -7,8 +7,8 @@ from tasks.research_agent_task import research_agent_task
 writing_agent_task = Task(
     agent=writer_agent,
     description=textwrap.dedent("""
-                Write a comprehensive report based on the provided on the topic and the research findings 
-                from the research agent report.
+                Write a comprehensive report based on the topic provided and the research summary findings provided 
+                by the research agent report.
                 
                 Your tasks:
                 1. Analyze the research data provided

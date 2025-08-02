@@ -1,14 +1,13 @@
 import os
-from crewai import Agent, LLM
+from crewai import Agent
+from langchain_openai import ChatOpenAI
 
 # LLM configurations - Agent specific config
 model = os.getenv("CRITIQUE_AGENT_LLM")
-temperature = float(os.getenv("CRITIQUE_AGENT_TEMPERATURE"))
 
-llm = LLM(
+llm = ChatOpenAI(
     model=model,
-    temperature=temperature,
-    api_key=os.getenv("GOOGLE_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 critique_agent = Agent(

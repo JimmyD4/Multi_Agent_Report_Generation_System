@@ -9,8 +9,8 @@ from tasks.writer_agent_task import writing_agent_task
 editor_agent_task = Task(
     agent=editor_agent,
     description=textwrap.dedent("""
-                After the writer agent has written the initial report and forwarded it to the critique agent, the critique agent
-                has given feedback on the initial report. Your goal is to revise and improve the report based on the critique provided.
+                After the writer agent has written the first draft report and forwarded it to the critique agent, the critique agent
+                has given feedback and submitted a critique report. Your goal is to revise and improve the first draft report based on the critique provided.
 
                 Your tasks:
                 1. Carefully review the critique and suggestions.

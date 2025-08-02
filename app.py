@@ -9,7 +9,7 @@ from crew import research_crewai
 
 def check_api_keys():
     """Check if required API keys are set"""
-    required_vars = ['SERPER_API_KEY', "GOOGLE_API_KEY"]
+    required_vars = ['SERPER_API_KEY', "OPENAI_API_KEY"]
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     return missing_vars
 
@@ -22,8 +22,12 @@ def main():
         layout="wide"
     )
 
-    st.title("Multi-Agent Report Generator")
+    st.title("AI-Powered Multi-Agent Report Generation System")
     st.markdown("*Powered by CrewAI Multi-Agent System*")
+    st.markdown("*AI system built with CrewAI, designed to automate the " \
+    "end-to-end process of research, report writing, critiquing, and final editing. " \
+    "It leverages a team of specialized AI agents working collaboratively to produce high-quality, " \
+    "well-structured reports, significantly streamlining the report generation workflow.*")
 
     os.makedirs('reports', exist_ok=True)
 
@@ -61,13 +65,14 @@ def main():
     # Main content area
     col1, col2 = st.columns([2, 1])
 
-    with col1:
-        st.header("📝 Research Topic")
-        topic = st.text_input(
-            "Enter your topic:",
-            placeholder=" ",
-            help="Enter any topic you want to research"
-        )
+    with st.container():
+        st.markdown("### 📝 Research Topic")
+        topic = st.text_area(
+        "Enter your topic:",
+        height=250,
+        placeholder="Write a detailed research question here...",
+        help="Be specific to get better results."
+    )
 
         if st.button("🚀 Start Generating", type="primary", disabled=bool(missing_vars)):
             if not topic.strip():
@@ -116,14 +121,20 @@ def main():
 
 
     with col2:
-        st.header("📊 Status")
-        if st.session_state.research_completed:
-            if st.session_state.research_error:
-                st.error(f"❌ Error: {st.session_state.research_error}")
+        with st.container():
+            st.markdown("#### 📊 Status")
+            status_text = ""
+            if st.session_state.research_completed:
+                if st.session_state.research_error:
+                    status_text = f"❌ {st.session_state.research_error}"
+                    st.markdown(f"<div style='color:red; font-size: 0.9em;'>{status_text}</div>", unsafe_allow_html=True)
+                else:
+                    status_text = "✅ Completed!"
+                    st.markdown(f"<div style='color:green; font-size: 0.9em;'>{status_text}</div>", unsafe_allow_html=True)
             else:
-                st.success("✅ Completed!")
-        else:
-            st.info("⏳ Waiting for research topic...")
+                status_text = "⏳ Waiting for research topic..."
+                st.markdown(f"<div style='color:gray; font-size: 0.85em;'>{status_text}</div>", unsafe_allow_html=True)
+
 
     # Results section
     if st.session_state.research_completed and not st.session_state.research_error:
@@ -131,8 +142,8 @@ def main():
 
         output_files = {
             "reports/research_summary.txt": "🔍 Research Summary",
-            "reports/initial_report.txt": "📝 Initial Report",
-            "reports/report_critique.txt": "📊 Critique Report",
+            "reports/first_draft_report.txt": "📝 Draft Report",
+            "reports/critique_report.txt": "📊 Critique Report",
             "reports/final_improved_report.txt": "📝 Final Report",
             "__direct_crewai_output__": "✨ CrewAI Final Result"
         }
@@ -172,7 +183,7 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.markdown("*Built with CrewAI, Streamlit, and Google Gemini*")
+    st.markdown("*Built with CrewAI, Streamlit, and OpenAI*")
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ This project showcases a  AI system built with [CrewAI](https://www.crewai.com/)
 *   **Intelligent Report Critiquing:** An AI Critique Specialist reviews the initial report, providing detailed feedback, suggestions for improvement, and an overall quality assessment.
 *   **Adaptive Report Editing:** An AI Report Editor revises and polishes the report based on the critique, ensuring clarity, consistency, and adherence to best practices in technical writing.
 *   **Sequential Agent Workflow:** Agents operate in a carefully orchestrated sequence, passing outputs from one stage to the next for iterative refinement.
-*   **Gemini LLM Integration:** Utilizes Google's Gemini models for powerful language generation and understanding.
+*   **OpenAI LLM Integration:** Utilizes OpenAI models for powerful language generation and understanding.
 *   **Streamlit Web Interface:** Provides an intuitive web application for easy interaction and viewing of results.
 
 ## Architecture - How It Works
@@ -70,10 +70,10 @@ Follow these steps to set up and run the project locally.
 
 ### API Keys & Configuration
 
-This project requires API keys for Google Gemini (for LLMs) and SerperDev (for web search).
+This project requires API keys for OpenAI (for LLMs) and SerperDev (for web search).
 
 1.  **Obtain API Keys:**
-    *   **Google Gemini:** Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
+    *   **OpenAI:** Get your API key from [OpenAI AI Studio](
     *   **SerperDev:** Get your API key from [SerperDev](https://serper.dev/).
 
 2.  **Create a `.env` file:**

@@ -1,16 +1,15 @@
 
 import os
-from crewai import Agent, LLM
+from crewai import Agent
 from crewai_tools import FileWriterTool
+from langchain_openai import ChatOpenAI
 
 # LLM configurations
 model = os.getenv("WRITER_AGENT_LLM")
-temperature = float(os.getenv("WRITER_AGENT_TEMPERATURE"))
 
-llm = LLM(
+llm = ChatOpenAI(
     model=model,
-    temperature=temperature,
-    api_key=os.getenv("GOOGLE_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 writer_agent = Agent(
