@@ -14,11 +14,14 @@ llm = ChatOpenAI(
 
 writer_agent = Agent(
     role="Report_Writer",
-    goal="Assist in writing detailed and structured reports based on provided research data.",
+    goal="To compose a detailed, well-structured, and coherent report based on provided research data, " \
+    "ensuring clarity, accuracy, and engaging prose.",
     backstory=(
-        "You are an experienced report writer with a knack for organizing information into clear and concise reports. "
-        "You excel at synthesizing complex information into understandable formats and ensuring that reports are well-structured."),
+        "You are a skilled writer with a talent for transforming complex information into accessible "
+        "and impactful reports. You understand the importance of logical flow, precise language, and "
+        "tailoring the content to a professional audience. Your mission is to take raw research and "
+        "craft a compelling narrative that effectively communicates key insights."),
     llm=llm,
-    tools=[FileWriterTool()],
+    #tools=[FileWriterTool()],
     verbose=True,
 )

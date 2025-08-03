@@ -90,6 +90,7 @@ def main():
                     st.info("🔄 Work in progress...")
                     progress_bar = st.progress(0)
 
+                    # Simulate initial progress
                     for i in range(25):
                         progress_bar.progress(i)
                         time.sleep(0.05)
@@ -105,8 +106,8 @@ def main():
 
                 # Run research
                 try:
-                    result = research_crewai.kickoff({"topic": topic})
-                    st.session_state.research_result = result
+                    
+                    research_crewai.kickoff({"topic": topic}) 
                     st.session_state.research_completed = True
                     st.session_state.research_error = None
                     progress_bar.progress(100)
@@ -139,38 +140,21 @@ def main():
     # Results section
     if st.session_state.research_completed and not st.session_state.research_error:
         st.header("📄 Results")
-
+        
         output_files = {
             "reports/research_summary.txt": "🔍 Research Summary",
-            "reports/first_draft_report.txt": "📝 Draft Report",
-            "reports/critique_report.txt": "📊 Critique Report",
-            "reports/final_improved_report.txt": "📝 Final Report",
-            "__direct_crewai_output__": "✨ CrewAI Final Result"
+            "reports/initial_report.txt": "📝 Initial Report",
+            "reports/report_critique.txt": "📊 Critique Report",
+            "reports/final_report.txt": "📝 Final Report",
         }
-
         tabs = st.tabs(list(output_files.values()))
-
         for i, (filename, title) in enumerate(output_files.items()):
             with tabs[i]:
-                if filename == "__direct_crewai_output__":
-                    if st.session_state.research_result:
-                        st.subheader("Raw CrewAI Output")
-                        crew_output_string = str(st.session_state.research_result)
-                        st.markdown(crew_output_string)
-                        
-                        st.download_button(
-                            label="📥 Download CrewAI Final Result",
-                            data=crew_output_string,
-                            file_name="crewai_final_result.md",
-                            mime="text/markdown"
-                        )
-                    else:
-                        st.info("CrewAI direct output not available.")
-                elif os.path.exists(filename):
+                
+                if os.path.exists(filename):
                     with open(filename, 'r', encoding='utf-8') as f:
                         content = f.read()
                     st.markdown(content)
-
                     # Download button
                     st.download_button(
                         label=f"📥 Download {title}",

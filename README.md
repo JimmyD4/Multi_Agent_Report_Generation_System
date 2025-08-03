@@ -24,7 +24,6 @@ The system operates as a multi-agent AI crew, where each agent specializes in a 
 
 2.  **✍️ Writer Agent (Report Writer)**
     *   **Role:** Drafts detailed and structured reports.
-    *   **Tool:** `FileWriterTool` (to save the initial draft).
     *   **Task:** Analyzes the research summary and writes a comprehensive initial report, including an executive summary, main content, findings, recommendations, conclusions, and APA-formatted references.
     *   **Output:** `reports/initial_report.txt` (First draft of the report).
 
@@ -36,9 +35,8 @@ The system operates as a multi-agent AI crew, where each agent specializes in a 
 
 4.  **📝 Editor & Finalizer Agent (Report Editor and Writer)**
     *   **Role:** Edits and finalizes the report.
-    *   **Tool:** `FileWriterTool` (to save the final report).
     *   **Task:** Revises and improves the initial report by incorporating all feedback and suggestions from the Critique Agent, ensuring a polished, well-structured, and consistent final document.
-    *   **Output:** `reports/final_improved_report.txt` (The complete, finalized report).
+    *   **Output:** `reports/final_report.txt` (The complete, finalized report).
 
 The entire process is orchestrated by a CrewAI `Crew` with a `sequential` process, ensuring a logical flow from research to final output.
 
@@ -55,7 +53,7 @@ Follow these steps to set up and run the project locally.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your_username/your_repo_name.git # Replace with your actual repo URL
+    git clone https://github.com/your_username/your_repo_name.git
     cd your_repo_name
     ```
 2.  **Create a virtual environment (recommended):**
@@ -73,7 +71,7 @@ Follow these steps to set up and run the project locally.
 This project requires API keys for OpenAI (for LLMs) and SerperDev (for web search).
 
 1.  **Obtain API Keys:**
-    *   **OpenAI:** Get your API key from [OpenAI AI Studio](
+    *   **OpenAI:** Get your API key from [OpenAI AI Studio]
     *   **SerperDev:** Get your API key from [SerperDev](https://serper.dev/).
 
 2.  **Create a `.env` file:**
@@ -87,7 +85,7 @@ Create a file named `requirements.txt` in your project root with the following c
 
 
 ## Project Structure
-.
+
 ├── agents/
 │   ├── __init__.py
 │   ├── critique_agent.py
@@ -104,7 +102,7 @@ Create a file named `requirements.txt` in your project root with the following c
 │   └── writer_agent_task.py
 
 
-├── reports/                 # Directory where all generated reports will be saved
+├── reports/                
 ├── .env.example             
 ├── .env                    
 ├── app.py                  

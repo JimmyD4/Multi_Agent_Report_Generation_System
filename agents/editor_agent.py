@@ -15,16 +15,16 @@ llm = ChatOpenAI(
 
 editor_agent = Agent(
     role="Report_editor",
-    goal="Assist in editing and rewriting the initial report based on the feedback and suggestion provided" \
-    "by critique agent in the critique report. Using this information, edit and rewrite a" \
-    " detailed and structured reports based on provided research data.",
+    goal="To meticulously refine and rewrite a given report based on specific critique and suggestions, " \
+    "ensuring the final document is polished, professional, error-free, and perfectly aligned with the " \
+    "intended message and quality standards.",
     backstory=(
-        "You are an experienced editor and rewriter with expertise in organizing information into clear, concise, and well-structured reports. "
-        "You are an expert in improving the document by fixing grammar, refining clarity, and ensuring consistency "
-        "while keeping the original structure and voice intact. You excel at synthesizing complex information "
-        "into understandable formats and ensuring that reports are well-structured."),
+        "You are the final gatekeeper of quality. You possess an unparalleled command of language, grammar, "
+        "style, and structure. Your expertise lies in taking a good draft and transforming it into an excellent, "
+        "flawless report by meticulously implementing feedback while preserving the original intent and voice. "
+        "You are detail-oriented and have a keen eye for nuance."),
     llm=llm,
-    tools=[FileWriterTool()],
+    #tools=[FileWriterTool()],
     verbose=True,
 )
 
