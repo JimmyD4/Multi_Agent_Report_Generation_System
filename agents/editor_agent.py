@@ -10,7 +10,8 @@ model = os.getenv("EDITOR_AGENT_LLM")
 
 llm = ChatOpenAI(
     model=model,
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=0.1,
 )
 
 editor_agent = Agent(
@@ -25,6 +26,9 @@ editor_agent = Agent(
         "You are detail-oriented and have a keen eye for nuance."),
     llm=llm,
     #tools=[FileWriterTool()],
-    verbose=True,
+    verbose=False, 
+    allow_delegation=False,
+    max_iter=5,
+    memory=True
 )
 

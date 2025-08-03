@@ -9,7 +9,8 @@ model = os.getenv("RESEARCH_AGENT_LLM")
 
 llm = ChatOpenAI(
     model=model,
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=0.1,
 )
 
 researcher_agent = Agent(
@@ -24,5 +25,8 @@ researcher_agent = Agent(
         "You understand that the quality of the report hinges on the depth and accuracy of your research."),
     llm=llm,
     tools=[SerperDevTool()],
-    verbose=True, 
+    verbose=False,
+    allow_delegation=True,  
+    max_iter=5, 
+    memory=True, 
 )

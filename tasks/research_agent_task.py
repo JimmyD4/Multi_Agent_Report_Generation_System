@@ -21,4 +21,5 @@ research_agent_task = Task(
                 """),
     expected_output="A markdown document containing the Key Findings Summary, Detailed Notes, Potential Gaps/Further Questions, and Source List.",
     output_file="reports/research_summary.txt",
+    verbose=False,
 )

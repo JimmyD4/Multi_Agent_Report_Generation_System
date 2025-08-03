@@ -1,5 +1,9 @@
-from crewai import Process
-from crewai import Crew, Task
+from crewai import Process, Crew
+import logging
+
+# Configure logging for clean output
+logging.getLogger("crewai").setLevel(logging.ERROR)
+logging.getLogger("langchain").setLevel(logging.ERROR)
 
 from agents.research_agent import researcher_agent
 from agents.writer_agent import writer_agent
@@ -25,5 +29,8 @@ research_crewai = Crew(
         editor_agent_task,
     ], 
     process=Process.sequential,     
-    verbose=True,
+    verbose=False,
+    memory=False,
+    max_rpm=10,
+    share_crew=False,
 )

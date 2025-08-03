@@ -9,7 +9,8 @@ model = os.getenv("WRITER_AGENT_LLM")
 
 llm = ChatOpenAI(
     model=model,
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=0.2,
 )
 
 writer_agent = Agent(
@@ -23,5 +24,8 @@ writer_agent = Agent(
         "craft a compelling narrative that effectively communicates key insights."),
     llm=llm,
     #tools=[FileWriterTool()],
-    verbose=True,
+    verbose=False,
+    allow_delegation=False,
+    max_iter=5,
+    memory=True,
 )

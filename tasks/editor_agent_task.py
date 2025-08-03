@@ -23,7 +23,7 @@ editor_agent_task = Task(
                 6.  Overall Polish: Ensure the report is perfectly formatted, easy to read, and ready for final presentation. The goal is a report that is superior to the initial draft in every measurable way.
                 7.  Maintain APA Citation Format: Ensure all in-text citations and the reference list at the end of the report adhere to APA format.
                 """),
-    expected_output="The complete, revised, and polished final version of the report",
+    expected_output="The complete, revised, and polished final version of the report in a markdown format",
     context=[writing_agent_task, critique_agent_task],
     output_file="reports/final_report.txt",
 )

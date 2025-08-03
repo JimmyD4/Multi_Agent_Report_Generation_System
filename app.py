@@ -17,7 +17,7 @@ def check_api_keys():
 def main():
     """Main Streamlit app"""
     st.set_page_config(
-        page_title="Multi-Agent Report Generator",
+        page_title="Multi-Agent Report Generation System",
         page_icon="🔬",
         layout="wide"
     )

@@ -7,7 +7,8 @@ model = os.getenv("CRITIQUE_AGENT_LLM")
 
 llm = ChatOpenAI(
     model=model,
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=0.1,
 )
 
 critique_agent = Agent(
@@ -22,6 +23,9 @@ critique_agent = Agent(
         "an exceptional final document. You think strategically about how a report can be made more persuasive, "
         "informative, and professional."),
     llm=llm,
-    verbose=True,
+    verbose=False,
+    allow_delegation=False,
+    max_iter=5,
+    memory=True,
 )
 
